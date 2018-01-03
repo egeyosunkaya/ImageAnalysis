@@ -8,6 +8,9 @@ load(LABEL_NUM);
 I = im2double(imread(PATH_IMG{1}));
 testRes = getLabelGraph(labels, numlabels);
 
+realDistances = getGraphDistance(testRes,numlabels);
+
+
 [result,pixCount] = findMeanColor(I,labels,numlabels);
 
 Iclone = I;
@@ -22,8 +25,6 @@ for r=1:rC
     end
 end
 
-
-a = getColorDistance(I , labels , 3 , 12);
 
 %imshow(Iclone);
 %figure; plot(testRes,'NodeLabel', testRes.Nodes.Name);
