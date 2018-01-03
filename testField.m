@@ -22,8 +22,11 @@ for r=1:rC
     end
 end
 
-imshow(Iclone);
-% figure; plot(testRes,'NodeLabel', testRes.Nodes.Name);
+
+a = getColorDistance(I , labels , 3 , 12);
+
+%imshow(Iclone);
+%figure; plot(testRes,'NodeLabel', testRes.Nodes.Name);
  
 
 
