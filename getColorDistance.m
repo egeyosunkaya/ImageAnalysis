@@ -1,4 +1,4 @@
-function colortextureDistance= getColorDistance(image, labels , label1 , label2)
+function colortextureDistance= getColorDistance(image, labels, gradient, label1 , label2)
     [row1,col1] = find(labels == label1);
     [row2,col2] = find(labels == label2);
     edges = 0:1/20:1;
@@ -51,27 +51,20 @@ function colortextureDistance= getColorDistance(image, labels , label1 , label2)
 
     distanceColor = norm(rgb1 - rgb2,1);
     
-    %WTF?
-    sigma = 0.5;
     
-    Wx = floor((5/2)*sigma); 
-    if Wx < 1
-      Wx = 1;
-    end
-    x = -Wx:Wx;
-
-    % Evaluate 1D Gaussian filter (and its derivative).
-    g = exp(-(x.^2)/(2*sigma^2));
-    gp = -(x/sigma).*exp(-(x.^2)/(2*sigma^2));
     
-    irfx = convolve2(convolve2(image(:,:,1),-gp,'same'),g','same');
-    irfy = convolve2(convolve2(image(:,:,1),g,'same'),-gp','same');
+    irfx = gradient{1,1};
+    irfy = gradient{2,1};
     
-    igfx = convolve2(convolve2(image(:,:,2),-gp,'same'),g','same');
-    igfy = convolve2(convolve2(image(:,:,2),g,'same'),-gp','same');
+    igfx = gradient{1,2};
+    igfy = gradient{2,2};
     
-    ibfx = convolve2(convolve2(image(:,:,3),-gp,'same'),g','same');
-    ibfy = convolve2(convolve2(image(:,:,3),g,'same'),-gp','same');
+    ibfx = gradient{1,3};
+    ibfy = gradient{2,3};
+    
+    %%%%%%%%
+    
+    
     
     
     orientations = cell(3,8);
