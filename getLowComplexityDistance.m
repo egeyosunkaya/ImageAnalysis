@@ -7,7 +7,7 @@ lsum = 0;
 
 for i = labelSet1
     for j = labelSet2
-        Dmax = max(Dmin, getColorDistance(image,labels,i,j));
+        Dmax = max(Dmax, getColorDistance(image,labels,i,j));
         Dg = min(Dg, getGraphDistanceSingle(labelGraph,i,j));
         [de, l] = calculateEdgeCost(image, labels, i,j);
         lsum = l + lsum;
