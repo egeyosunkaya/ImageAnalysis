@@ -30,7 +30,7 @@ end
 %resultShouldNOTBeZero = calculateEdgeCost(I_ORG, labels, 1, 2);
 
 
-
+%Initialization for sets
 sets = cell(1,numlabels);
 numSets = numlabels;
 for i = 1:numlabels
@@ -41,24 +41,40 @@ end
 minDist = Inf;
 set1Index = -1;
 set2Index = -1;
+%Constants from the paper
 highCompLevel = 0.1;
 boundary = 6;
+%Graph 
 graph = testRes;
-for i = 1:numSets
-    for j = i:numSets
-        set1 = sets{1,i};
-        set2 = sets{1,j};
-        if (~isempty(set1) && ~isempty(set2))
-            d = complexityAdaptiveDistance(I , labels , graph , numlabels, set1 , set2, highCompLevel, boundary);
-            if(d < minDist)
-                set1Index = i;
-                set2Index = j;
-                minDist = d;
-            end
-        end
-        disp(sprintf("%d of %d || i = %f , j = %f , dist = %f" , (i-1) * numSets + j , (numSets*numSets)/2 , i , j , d));
-    end
-end
+
+
+%Just define de sets here it can either be multiple superpixel labels or
+%just 1 label
+
+set1 = [1,2];
+set2 = 8;
+
+d = complexityAdaptiveDistance(I , labels , graph , numlabels, set1 , set2, highCompLevel, boundary);
+
+
+
+% FOR ACTUAL CODE DONT DELETE PLS
+
+% for i = 1:numSets
+%     for j = i:numSets
+%         set1 = sets{1,i};
+%         set2 = sets{1,j};
+%         if (~isempty(set1) && ~isempty(set2))
+%             d = complexityAdaptiveDistance(I , labels , graph , numlabels, set1 , set2, highCompLevel, boundary);
+%             if(d < minDist)
+%                 set1Index = i;
+%                 set2Index = j;
+%                 minDist = d;
+%             end
+%         end
+%         disp(sprintf("%d of %d || i = %f , j = %f , dist = %f" , (i-1) * numSets + j , (numSets*numSets)/2 , i , j , d));
+%     end
+% end
 
 
 
