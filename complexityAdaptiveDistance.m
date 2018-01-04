@@ -1,6 +1,6 @@
-function distance = complexityAdaptiveDistance(image , labels , graph , numLabels, labelSet1 , labelSet2 , highCompLevel, boundary)
- DL = getLowComplexityDistance(image, labels , graph , labelSet1, labelSet2);
- DH = getHighComplexityDistance(image,labels , graph , labelSet1, labelSet2);
+function distance = complexityAdaptiveDistance(image , labels , graph ,gradient, numLabels, labelSet1 , labelSet2 , highCompLevel, boundary)
+ DL = getLowComplexityDistance(image, labels , graph ,gradient, labelSet1, labelSet2);
+ DH = getHighComplexityDistance(image,labels , graph ,gradient, labelSet1, labelSet2);
  
  rm = 0;
  rn = 0;
