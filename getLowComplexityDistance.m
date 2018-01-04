@@ -15,7 +15,11 @@ for i = labelSet1
     end
 end
 
-De = De/lsum;
+if(lsum == 0)
+    De = 0;
+else
+    De = De/lsum;
+end
 
 lcd = Dg + Dmax + De;
 

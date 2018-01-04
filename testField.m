@@ -26,8 +26,44 @@ for r=1:rC
     end
 end
 
-resultShouldBeZero = calculateEdgeCost(I_ORG, labels, 1, 3);
-resultShouldNOTBeZero = calculateEdgeCost(I_ORG, labels, 1, 2);
+%resultShouldBeZero = calculateEdgeCost(I_ORG, labels, 1, 3);
+%resultShouldNOTBeZero = calculateEdgeCost(I_ORG, labels, 1, 2);
+
+
+
+sets = cell(1,numlabels);
+numSets = numlabels;
+for i = 1:numlabels
+    sets{1,i} = i;
+end
+
+
+minDist = Inf;
+set1Index = -1;
+set2Index = -1;
+highCompLevel = 0.1;
+boundary = 6;
+graph = testRes;
+for i = 1:numSets
+    for j = i:numSets
+        set1 = sets{1,i};
+        set2 = sets{1,j};
+        if (~isempty(set1) && ~isempty(set2))
+            d = complexityAdaptiveDistance(I , labels , graph , numlabels, set1 , set2, highCompLevel, boundary);
+            if(d < minDist)
+                set1Index = i;
+                set2Index = j;
+                minDist = d;
+            end
+        end
+        disp(sprintf("%d of %d || i = %f , j = %f , dist = %f" , (i-1) * numSets + j , (numSets*numSets)/2 , i , j , d));
+    end
+end
+
+
+
+
+
 %imshow(Iclone);
 %figure; plot(testRes,'NodeLabel', testRes.Nodes.Name);
  

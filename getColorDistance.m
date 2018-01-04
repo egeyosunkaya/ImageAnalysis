@@ -130,8 +130,8 @@ function colortextureDistance= getColorDistance(image, labels , label1 , label2)
     for i = 1:8
         for j = 1:3
             for k = 1:10
-                hist1(i * j,k) = oHist1{j,i}(1,k);
-                hist2(i * j,k) = oHist2{j,i}(1,k);
+                hist1((i-1) * 3 + j ,k) = oHist1{j,i}(1,k);
+                hist2((i-1) * 3 + j ,k) = oHist2{j,i}(1,k);
             end
         end
     end

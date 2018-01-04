@@ -1,4 +1,4 @@
-function hcd = getHighComplexityDistance(image,labels,labelGraph,labelSet1,labelSet2,b)
+function hcd = getHighComplexityDistance(image,labels,labelGraph,labelSet1,labelSet2)
 Dmin = Inf;
 Dg = Inf;
 
@@ -9,7 +9,7 @@ for i = labelSet1
     end
 end
 
-hcd = b*Dg + Dmin;
+hcd = 0.4*Dg + Dmin;
 
 
 end
