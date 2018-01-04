@@ -86,7 +86,6 @@ set2 = 488;
 % FOR ACTUAL CODE DONT DELETE PLS
 
 
-
 asdasd = mergePixels(I , labels , graph , gradient , sets);
 
 

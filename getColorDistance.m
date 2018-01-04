@@ -75,41 +75,15 @@ function colortextureDistance= getColorDistance(image, labels, gradient, label1 
         orientations{3,i} = cos(angle*(pi/180))*ibfx+sin(angle*(pi/180))*ibfy;
         i = i + 1;
     end
-    
-    
-    oHist1 = cell(3,8);
-    oHist2 = cell(3,8);
-    
-    for o = 1:8
-        matr = orientations{1,o};
-        matg = orientations{2,o};
-        matb = orientations{3,o};
-        for i = 1:size(rc1,1)
-            oHist1{1,o}(1,i) = matr(rc1(i,1),rc1(i,2));
-            oHist1{2,o}(1,i) = matg(rc1(i,1),rc1(i,2));
-            oHist1{3,o}(1,i) = matb(rc1(i,1),rc1(i,2));
-        end
-    end
-    
-    for o = 1:8
-        matr = orientations{1,o};
-        matg = orientations{2,o};
-        matb = orientations{3,o};
-        for i = 1:size(rc2,1)
-            oHist2{1,o}(1,i) = matr(rc2(i,1),rc2(i,2));
-            oHist2{2,o}(1,i) = matg(rc2(i,1),rc2(i,2));
-            oHist2{3,o}(1,i) = matb(rc2(i,1),rc2(i,2));
-        end
-    end
-    
-    
+
+
     edges = -25:5:25;
     
     for o = 1:8
         for color = 1:3
-            oHist1{color, o} = histcounts(oHist1{color,o},edges);
+            oHist1{color, o} = histcounts(orientations{1,o}(labels == label1),edges);
             oHist1{color,o} = oHist1{color, o} / sum(oHist1{color, o});
-            oHist2{color, o} = histcounts(oHist2{color,o},edges);
+            oHist2{color, o} = histcounts(orientations{1,o}(labels == label2),edges);
             oHist2{color,o} = oHist2{color, o} / sum(oHist2{color, o});
         end
     end
@@ -128,17 +102,8 @@ function colortextureDistance= getColorDistance(image, labels, gradient, label1 
             end
         end
     end
-    
-    
-    
-    
-   
 
-    
-    
-    
-    
-    
+  
     
     distanceTexture = norm((hist1 - hist2),1);
     colortextureDistance = distanceColor + distanceTexture;
