@@ -1,4 +1,4 @@
-function [edgeResponse] = calculateEdgeCost(img_org, labels, labOne, labTwo)
+function [edgeResponse, commonSize] = calculateEdgeCost(img_org, labels, labOne, labTwo)
 edgeResponse = 0;
 % Find common border..
 edgeImg = edge(rgb2gray(img_org),'Prewitt');
