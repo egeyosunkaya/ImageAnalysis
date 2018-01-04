@@ -64,14 +64,14 @@ function colortextureDistance= getColorDistance(image, labels , label1 , label2)
     g = exp(-(x.^2)/(2*sigma^2));
     gp = -(x/sigma).*exp(-(x.^2)/(2*sigma^2));
     
-    irfx = conv2(conv2(image(:,:,1),-gp,'same'),g','same');
-    irfy = conv2(conv2(image(:,:,1),g,'same'),-gp','same');
+    irfx = convolve2(convolve2(image(:,:,1),-gp,'same'),g','same');
+    irfy = convolve2(convolve2(image(:,:,1),g,'same'),-gp','same');
     
-    igfx = conv2(conv2(image(:,:,2),-gp,'same'),g','same');
-    igfy = conv2(conv2(image(:,:,2),g,'same'),-gp','same');
+    igfx = convolve2(convolve2(image(:,:,2),-gp,'same'),g','same');
+    igfy = convolve2(convolve2(image(:,:,2),g,'same'),-gp','same');
     
-    ibfx = conv2(conv2(image(:,:,3),-gp,'same'),g','same');
-    ibfy = conv2(conv2(image(:,:,3),g,'same'),-gp','same');
+    ibfx = convolve2(convolve2(image(:,:,3),-gp,'same'),g','same');
+    ibfy = convolve2(convolve2(image(:,:,3),g,'same'),-gp','same');
     
     
     orientations = cell(3,8);
