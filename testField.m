@@ -5,8 +5,12 @@ LABEL_NUM = "Labels/label_number_" + NAME + ".mat";
 PATH_IMG = "Data/" + NAME;
 load(LABEL);
 load(LABEL_NUM);
-I = im2double(imread(PATH_IMG{1}));
+I_ORG = imread(PATH_IMG{1});
+I = im2double(I_ORG);
 testRes = getLabelGraph(labels, numlabels);
+
+% realDistances = getGraphDistance(testRes,numlabels);
+realDistances = getGraphDistanceSingle(testRes,1,2);
 
 [result,pixCount] = findMeanColor(I,labels,numlabels);
 
@@ -22,9 +26,8 @@ for r=1:rC
     end
 end
 
-
-a = getColorDistance(I , labels , 3 , 12);
-
+resultShouldBeZero = calculateEdgeCost(I_ORG, labels, 1, 3);
+resultShouldNOTBeZero = calculateEdgeCost(I_ORG, labels, 1, 2);
 %imshow(Iclone);
 %figure; plot(testRes,'NodeLabel', testRes.Nodes.Name);
  
