@@ -4,8 +4,8 @@ highCompLevel = 0.1;
 boundary = 6;
 numSets = length(sets);
 numlabels = max(max(labels));
-for i = 1:5
-    for j = i+1:5
+for i = 1:numSets
+    for j = i+1:numSets
         set1 = sets{1,i};
         set2 = sets{1,j};
         if (~isempty(set1) && ~isempty(set2))
