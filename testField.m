@@ -34,6 +34,17 @@ testRes = getLabelGraph(labels, numlabels);
 
 resultSet = mergeAll(I,labels,numlabels);
 
+reslabels = labels;
+for i = 1:length(resultSet)
+    for j = 2:length(resultSet{1,i})
+        reslabels(reslabels == resultSet{1,i}(1,j)) = resultSet{1,i}(1,1);
+        
+    end
+    
+end
+
+
+imshow(label2rgb(reslabels));
 
 
 

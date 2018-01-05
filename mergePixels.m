@@ -25,7 +25,9 @@ for i = 1:numSets
     end
 end
 
-sets{1,set1Index} = cat(2,sets{1,set1Index},sets{1,set2Index});
-sets(:,set2Index) = [];
+if (set1Index > 0 && set2Index > 0)
+    sets{1,set1Index} = cat(2,sets{1,set1Index},sets{1,set2Index});
+    sets(:,set2Index) = [];
+end
 end
 

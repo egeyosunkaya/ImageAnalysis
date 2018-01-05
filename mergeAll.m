@@ -132,7 +132,7 @@ end
 
     edgeImg = edge(rgb2gray(I),'Prewitt');
 
-for i = 1:20
+for i = 1:numlabels - 3
     sets = mergePixels(I,edgeImg, labels ,numlabels , graphDistances ,colorHists, ohists , sets , labelIndices);
 end
 
