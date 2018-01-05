@@ -26,9 +26,9 @@ for i = 1:numSets
 end
 
 if (set1Index > 0 && set2Index > 0)
-    sets{1,set1Index} = cat(2,sets{1,set1Index},sets{1,set2Index});
-    sets(:,set2Index) = [];
     disp(sprintf("Merged Sets : %d and %d length of first: %d , second: %d" , set1Index , set2Index , length(sets{1,set1Index}) , length(sets{1,set2Index})));
+    sets{1,set1Index} = cat(2,sets{1,set1Index},sets{1,set2Index});
+    sets(:,set2Index) = []; 
 end
 
 end

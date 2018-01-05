@@ -9,9 +9,14 @@ boundary = 5.6;
  rn = 0;
  [sx , sy] = size(labels);
  sz = sx*sy;
-
+ 
+ if(length(labelSet1) > 6 || length(labelSet2) > 6)
+     asd = 4;
+ end
+ 
  for i = labelSet1
      rm = rm + (double(labelCounts(1,i))) / double(sz);
+     
  end
  
  for j = labelSet2
@@ -32,6 +37,6 @@ boundary = 5.6;
  
  
  %disp(sprintf("Tm = %d | Tn = %d | p = %0.4f" ,length(labelSet1), length(labelSet2),p));
- distance = p*DL +(1-p)*DH + 2*Ds;
+ distance = p*DL +(1-p)*DH + 4*Ds;
 end
 
