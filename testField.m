@@ -31,8 +31,8 @@ testRes = getLabelGraph(labels, numlabels);
 
 
 
-
-resultSet = mergeAll(I,labels,numlabels);
+iterationCount = numlabels -3;
+resultSet = mergeAll(I,labels,numlabels , iterationCount);
 
 reslabels = labels;
 for i = 1:length(resultSet)
@@ -45,6 +45,7 @@ end
 
 
 imshow(label2rgb(reslabels));
+figure, imshow(I_ORG);
 
 
 

@@ -1,5 +1,6 @@
 function [edgeResponse, commonSize] = calculateEdgeCost(edgeImg, labels,labelIndices, labOne, labTwo)
 edgeResponse = 0;
+commonSize = 0;
 % Find common border..
 
 

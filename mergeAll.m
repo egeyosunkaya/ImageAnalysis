@@ -1,4 +1,4 @@
-function sets = mergeAll(I,labels,numlabels)
+function sets = mergeAll(I,labels,numlabels,iterationCount)
 
     graph = getLabelGraph(labels, numlabels+1);
     
@@ -132,7 +132,7 @@ end
 
     edgeImg = edge(rgb2gray(I),'Prewitt');
 
-for i = 1:numlabels - 3
+for i = 1:iterationCount
     sets = mergePixels(I,edgeImg, labels ,numlabels , graphDistances ,colorHists, ohists , sets , labelIndices);
 end
 
