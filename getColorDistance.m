@@ -5,6 +5,8 @@ function colortextureDistance= getColorDistance(image, labels,colorHists, orient
     
 
     edges = -25:5:25;
+    
+    
     oHist1 = orientations(label1,:,:);
     oHist2 = orientations(label2,:,:);
     
