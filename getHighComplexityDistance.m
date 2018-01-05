@@ -1,11 +1,11 @@
-function hcd = getHighComplexityDistance(image,labels,labelGraph,colorHists,gradient,labelSet1,labelSet2)
+function hcd = getHighComplexityDistance(image,labels,graphDistances,colorHists,gradient,labelSet1,labelSet2)
 Dmin = Inf;
 Dg = Inf;
 
 for i = labelSet1
     for j = labelSet2
         Dmin = min(Dmin, getColorDistance(image,labels,colorHists,gradient,i,j));
-        Dg = min(Dg, getGraphDistanceSingle(labelGraph,i,j));
+        Dg = min(Dg, graphDistances(i,j));
     end
 end
 

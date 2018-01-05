@@ -5,8 +5,7 @@
 %
 
 function [dist] = getGraphDistanceSingle(labelGraph,from,to)
-path = shortestpath(labelGraph,from,to);
-[~,dist]=size(path);
-dist = dist -1;
+    path = shortestpath(labelGraph,from,to);
+    dist = length(path) - 1;
 end
 

@@ -7,8 +7,9 @@ load(LABEL);
 load(LABEL_NUM);
 I_ORG = imread(PATH_IMG{1});
 I = im2double(I_ORG);
-testRes = getLabelGraph(labels, numlabels);
 labels = labels + 1;
+testRes = getLabelGraph(labels, numlabels);
+
 
     
 

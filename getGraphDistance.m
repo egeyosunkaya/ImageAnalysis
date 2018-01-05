@@ -6,18 +6,18 @@
 %
 
 function [distanceMatrix] = getGraphDistance(labelGraph,labelCount)
+
 distanceMatrix = zeros(labelCount,labelCount);
 
 for i=1:labelCount
-    for j=(0+i):labelCount
+    for j=(1+i):labelCount
         if distanceMatrix(i,j) == 0
             path = shortestpath(labelGraph,i,j);
             [~,dist]=size(path);
-            distanceMatrix(i,j) = dist-1;
-            distanceMatrix(j,i) = dist-1;
+            distanceMatrix(i,j) = dist;
+            distanceMatrix(j,i) = dist;
         end
     end
 end
 
-end
 

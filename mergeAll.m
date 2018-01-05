@@ -1,7 +1,9 @@
 function sets = mergeAll(I,labels,numlabels)
 
     graph = getLabelGraph(labels, numlabels+1);
-
+    
+    
+    graphDistances= getGraphDistance(graph,numlabels);
 
     %GET GRADIENT OF IMAGE FOR COLOR-TEXTURE DISTANCE
     sigma = 0.5;
@@ -121,8 +123,9 @@ for l = 1:numlabels
     
 end   
 
+
 for i = 1:100
-    mergePixels(I, labels , graph ,colorHists, ohists , sets)
+    sets = mergePixels(I, labels , graphDistances ,colorHists, ohists , sets);
 end
 
 end

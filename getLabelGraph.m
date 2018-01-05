@@ -5,16 +5,16 @@ allMatrix = zeros(labelCount, labelCount);
 
 for r=1:rowCount-1
     for c=1:columnCount-1
-        tmpCurr = labels(r,c)+1;
-        tmpNext = labels(r,c+1)+1;
+        tmpCurr = labels(r,c);
+        tmpNext = labels(r,c+1);
         
         if tmpCurr ~= tmpNext
             allMatrix(tmpCurr, tmpNext) = 1;
             allMatrix(tmpNext, tmpCurr) = 1;
         end
         
-        tmpCurr = labels(r,c)+1;
-        tmpNext = labels(r+1,c)+1;
+        tmpCurr = labels(r,c);
+        tmpNext = labels(r+1,c);
         
         if tmpCurr ~= tmpNext
             allMatrix(tmpCurr, tmpNext) = 1;

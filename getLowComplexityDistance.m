@@ -1,15 +1,14 @@
-function lcd = getLowComplexityDistance(image,labels,labelGraph,colorHists,gradient,labelSet1,labelSet2)
+function lcd = getLowComplexityDistance(image,labels,graphDistances,colorHists,gradient,labelSet1,labelSet2,edgeImg)
 Dmax = -Inf;
 Dg = Inf;
 De = 0;
 
 lsum = 0;
-
 for i = labelSet1
     for j = labelSet2
         Dmax = max(Dmax, getColorDistance(image,labels,colorHists,gradient,i,j));
-        Dg = min(Dg, getGraphDistanceSingle(labelGraph,i,j));
-        [de, l] = calculateEdgeCost(image, labels, i,j);
+        Dg = min(Dg, graphDistances(i,j));
+        [de, l] = calculateEdgeCost(edgeImg, labels, i,j);
         lsum = l + lsum;
         De = De + l * de;
     end

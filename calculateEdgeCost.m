@@ -1,7 +1,7 @@
-function [edgeResponse, commonSize] = calculateEdgeCost(img_org, labels, labOne, labTwo)
+function [edgeResponse, commonSize] = calculateEdgeCost(edgeImg, labels, labOne, labTwo)
 edgeResponse = 0;
 % Find common border..
-edgeImg = edge(rgb2gray(img_org),'Prewitt');
+
 
 [rC,cC] = size(labels);
 [rowArr,colArr]=find(labels==labOne);

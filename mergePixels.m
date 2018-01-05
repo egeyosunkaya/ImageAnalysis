@@ -1,15 +1,16 @@
-function sets = mergePixels(I, labels , graph ,colorHists, gradient , sets)
+function sets = mergePixels(I, labels , graphDistances ,colorHists, gradient , sets)
 minDist = Inf;
 highCompLevel = 0.1;
 boundary = 6;
 numSets = length(sets);
 numlabels = max(max(labels));
+edgeImg = edge(rgb2gray(I),'Prewitt'); 
 for i = 1:numSets
     for j = i+1:numSets
         set1 = sets{1,i};
         set2 = sets{1,j};
         if (~isempty(set1) && ~isempty(set2))
-            d = complexityAdaptiveDistance(I , labels , graph ,colorHists,gradient, numlabels, set1 , set2, highCompLevel, boundary);
+            d = complexityAdaptiveDistance(I,edgeImg, labels , graphDistances ,colorHists,gradient, numlabels, set1 , set2, highCompLevel, boundary);
             if(d < minDist)
                 set1Index = i;
                 set2Index = j;
