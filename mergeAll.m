@@ -60,6 +60,21 @@ function sets = mergeAll(I,labels,numlabels)
         end
     end
     
+    ohists = cell(1,numlabels);
+   
+    
+    for l = 1:numlabels
+        ohists{1,numlabels} = zeros(24,10);
+        for i = 1:8
+            for j = 1:3
+                for k = 1:10
+                    ohists{1,l}((i-1) * 3 + j ,k) = oHists{l,j,i}(1,k);
+                end
+            end
+        end
+    end
+
+    
     
     %GET COLOR HISTOGRAMS
     
@@ -107,7 +122,7 @@ for l = 1:numlabels
 end   
 
 for i = 1:100
-    mergePixels(I, labels , graph ,colorHists, oHists , sets)
+    mergePixels(I, labels , graph ,colorHists, ohists , sets)
 end
 
 end
