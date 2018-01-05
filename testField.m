@@ -1,5 +1,5 @@
 
-NAME = '000483.jpg';
+NAME = '000215.jpg';
 LABEL     = "Labels/label_" + NAME + ".mat";
 LABEL_NUM = "Labels/label_number_" + NAME + ".mat";
 PATH_IMG = "Data/" + NAME;
@@ -31,7 +31,7 @@ testRes = getLabelGraph(labels, numlabels);
 
 
 
-iterationCount = numlabels -3;
+iterationCount = numlabels - 5;
 resultSet = mergeAll(I,labels,numlabels , iterationCount);
 
 reslabels = labels;
@@ -44,10 +44,9 @@ for i = 1:length(resultSet)
 end
 
 
-imshow(label2rgb(reslabels));
-figure, imshow(I_ORG);
 
-
+figure;
+imshowpair(I_ORG, label2rgb(reslabels), 'montage')
 
 
 

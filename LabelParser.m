@@ -9,7 +9,7 @@
          label_name = "Labels/label_" + file_real_name + ".mat";
          label_name_num = "Labels/label_number_" + file_real_name + ".mat";
          img = imread(file_name{1});
-         [labels, numlabels] = getSPLabels(img,100,2,10);
+         [labels, numlabels] = getSPLabels(img,200,1,150);
          save(label_name{1},'labels');
          save(label_name_num{1},'numlabels');
          labels = 0;
