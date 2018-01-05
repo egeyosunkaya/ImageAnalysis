@@ -1,4 +1,4 @@
-function sets = mergePixels(I, labels , graph , gradient , sets)
+function sets = mergePixels(I, labels , graph ,colorHists, gradient , sets)
 minDist = Inf;
 highCompLevel = 0.1;
 boundary = 6;
@@ -9,7 +9,7 @@ for i = 1:numSets
         set1 = sets{1,i};
         set2 = sets{1,j};
         if (~isempty(set1) && ~isempty(set2))
-            d = complexityAdaptiveDistance(I , labels , graph ,gradient, numlabels, set1 , set2, highCompLevel, boundary);
+            d = complexityAdaptiveDistance(I , labels , graph ,colorHists,gradient, numlabels, set1 , set2, highCompLevel, boundary);
             if(d < minDist)
                 set1Index = i;
                 set2Index = j;
