@@ -1,7 +1,7 @@
 
 close all;
-I = im2double(imread('Data/000710.jpg'));
-[labels,numlabels] = getSPLabels(I,100,2,10);
+I = im2double(imread('Data/006357.jpg'));
+[labels,numlabels] = getSPLabels(I,200,1,150);
 [result,pixCount] = findMeanColor(I,labels,numlabels);
 
 Iclone = I;
