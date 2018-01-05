@@ -4,6 +4,13 @@ function sets = mergeAll(I,labels,numlabels)
     
     
     graphDistances= getGraphDistance(graph,numlabels);
+    
+    labelIndices = cell(1,numlabels);
+    for i = 1:numlabels
+        [row,col] = find(labels == i);
+        labelIndices{1,i} = [row,col];
+    end
+    
 
     %GET GRADIENT OF IMAGE FOR COLOR-TEXTURE DISTANCE
     sigma = 0.5;
@@ -123,9 +130,10 @@ for l = 1:numlabels
     
 end   
 
+    edgeImg = edge(rgb2gray(I),'Prewitt');
 
-for i = 1:100
-    sets = mergePixels(I, labels , graphDistances ,colorHists, ohists , sets);
+for i = 1:20
+    sets = mergePixels(I,edgeImg, labels ,numlabels , graphDistances ,colorHists, ohists , sets , labelIndices);
 end
 
 end

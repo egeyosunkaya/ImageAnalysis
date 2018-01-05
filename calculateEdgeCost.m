@@ -1,10 +1,12 @@
-function [edgeResponse, commonSize] = calculateEdgeCost(edgeImg, labels, labOne, labTwo)
+function [edgeResponse, commonSize] = calculateEdgeCost(edgeImg, labels,labelIndices, labOne, labTwo)
 edgeResponse = 0;
 % Find common border..
 
 
 [rC,cC] = size(labels);
-[rowArr,colArr]=find(labels==labOne);
+temp = labelIndices{1,labOne};
+rowArr = temp(:,1);
+colArr = temp(:,2);
 [realSize,~] = size(rowArr);
 
 totalResp  = 0;

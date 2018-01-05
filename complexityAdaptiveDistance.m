@@ -1,17 +1,19 @@
-function distance = complexityAdaptiveDistance(image,edgeImg, labels , graphDistances ,colorHists,gradient, numLabels, labelSet1 , labelSet2 , highCompLevel, boundary)
- 
- DL = getLowComplexityDistance(image, labels , graphDistances , colorHists,gradient, labelSet1, labelSet2 , edgeImg);
- DH = getHighComplexityDistance(image,labels , graphDistances , colorHists,gradient, labelSet1, labelSet2);
+function distance = complexityAdaptiveDistance(image,edgeImg, labels , labelCounts , graphDistances ,colorHists,gradient, numLabels, labelSet1 , labelSet2 , labelIndices)
+highCompLevel = 0.1;
+boundary = 6;
+
+ DL = getLowComplexityDistance(image, labels , graphDistances , colorHists,gradient, labelSet1, labelSet2 , edgeImg , labelIndices);
+ DH = getHighComplexityDistance(image,labels , graphDistances , colorHists,gradient, labelSet1, labelSet2 , labelIndices);
  
  rm = 0;
  rn = 0;
 
  for i = labelSet1
-     rm = rm + (double(nnz(labels(labels == i))) / double(numLabels));
+     rm = rm + (double(labelCounts(1,i))) / double(numLabels);
  end
  
  for j = labelSet2
-     rn = rn + (double(nnz(labels(labels == j))) / double(numLabels));
+     rn = rn + double(labelCounts(1,j)) / double(numLabels);
  end
  
  Ds = rm + rn;

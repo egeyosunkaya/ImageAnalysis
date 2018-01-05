@@ -1,4 +1,4 @@
-function hcd = getHighComplexityDistance(image,labels,graphDistances,colorHists,gradient,labelSet1,labelSet2)
+function hcd = getHighComplexityDistance(image,labels,graphDistances,colorHists,gradient,labelSet1,labelSet2,labelIndices)
 Dmin = Inf;
 Dg = Inf;
 
