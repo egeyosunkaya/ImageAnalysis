@@ -9,7 +9,7 @@ I = im2double(I_ORG);
 
 
 boundingBox = { [206,97,351,270] ,[1,2,2,5], [26,27,51,70]};
-[prec,reca] = evaluate(NAME,boundingBox);
+[prec,reca] = evaluate(NAME,boundingBox, 0.5);
 
 % 
 % [labels,numlabels] = getSPLabels(I,200,1,150);
