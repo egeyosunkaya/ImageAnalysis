@@ -1,5 +1,5 @@
  
-NAME = '000215.jpg';
+NAME = '000012.jpg';
 LABEL     = "Labels/label_" + NAME + ".mat";
 LABEL_NUM = "Labels/label_number_" + NAME + ".mat";
 PATH_IMG = "Data/" + NAME;
@@ -31,7 +31,7 @@ testRes = getLabelGraph(labels, numlabels);
 
 
 
-iterationCount = numlabels - 5;
+iterationCount = ceil(numlabels - 10    );
 [resultSet,highScore] = mergeAll(I,labels,numlabels , iterationCount);
 
 reslabels = labels;
@@ -43,10 +43,22 @@ for i = 1:length(resultSet)
     
 end
 
+scorelabels = labels;
+for i = 1:length(highScore)
+    for j = 2:length(highScore)
+        scorelabels(scorelabels == highScore(1,j)) = highScore(1,1);
+    end
+end
+
+scorelabels(scorelabels ~= highScore(1,1)) = 0;
 
 
+
+
+%figure;
+%imshowpair(I_ORG, label2rgb(reslabels), 'montage');
 figure;
-imshowpair(I_ORG, label2rgb(reslabels), 'montage')
+imshowpair(I_ORG, label2rgb(scorelabels), 'montage');
 
 
 

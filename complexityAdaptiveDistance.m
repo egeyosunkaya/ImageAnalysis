@@ -1,5 +1,5 @@
 function distance = complexityAdaptiveDistance(image,edgeImg, labels , labelCounts , graphDistances ,colorHists,gradient, numLabels, labelSet1 , labelSet2 , labelIndices)
-highCompLevel = 0.3;
+highCompLevel = 0.2;
 boundary = 4;
 
  DL = getLowComplexityDistance(image, labels , graphDistances , colorHists,gradient, labelSet1, labelSet2 , edgeImg , labelIndices);
@@ -31,8 +31,8 @@ boundary = 4;
  %p = 1/10;
  
  
- disp(sprintf("Tm = %d | Tn = %d | p = %0.4f" ,length(labelSet1), length(labelSet2),p));
- disp(sprintf("DL = %f | DH = %f | DS = %f | p = %0.4f" ,DL, DH ,Ds ,p));
- distance = p*DL +(1-p)*DH + 2*Ds;
+ %disp(sprintf("Tm = %d | Tn = %d | p = %0.4f" ,length(labelSet1), length(labelSet2),p));
+ %disp(sprintf("DL = %f | DH = %f | DS = %f | p = %0.4f" ,DL, DH ,Ds ,p));
+ distance = p*DL +(1-p)*DH + Ds;
 end
 

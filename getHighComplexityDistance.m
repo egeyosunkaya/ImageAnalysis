@@ -9,7 +9,7 @@ for i = labelSet1
     end
 end
 
-hcd = 0.4*Dg + Dmin;
+hcd = 0.8*Dg + Dmin;
 
 
 end
