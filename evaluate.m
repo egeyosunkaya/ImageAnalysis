@@ -1,4 +1,4 @@
-function [precision,recall] = evaluate(NAME,boundingBoxes)
+function [precision,recall] = evaluate(NAME,boundingBoxes, threshold)
 tmpName = extractBefore(NAME,'.jpg');
 PATH_REAL = "Data/" + tmpName + ".txt";
 fileID = fopen(PATH_REAL{1},'r');
@@ -24,7 +24,7 @@ for i=1:detectedCount
         ourBox  = [ topX,   topY,   lowX-topX, lowY-topY  ];
         realBox = [ rtopX, rtopY, rlowX-rtopX, rlowY-rtopY];
         overlapRatio = bboxOverlapRatio(ourBox,realBox);
-        if overlapRatio > 0.5
+        if overlapRatio > threshold
             correctObjects = correctObjects + 1;
             break;
         end
