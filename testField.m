@@ -1,4 +1,4 @@
-
+ 
 NAME = '000215.jpg';
 LABEL     = "Labels/label_" + NAME + ".mat";
 LABEL_NUM = "Labels/label_number_" + NAME + ".mat";
@@ -32,7 +32,7 @@ testRes = getLabelGraph(labels, numlabels);
 
 
 iterationCount = numlabels - 5;
-resultSet = mergeAll(I,labels,numlabels , iterationCount);
+[resultSet,highScore] = mergeAll(I,labels,numlabels , iterationCount);
 
 reslabels = labels;
 for i = 1:length(resultSet)

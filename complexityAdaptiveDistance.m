@@ -1,26 +1,21 @@
 function distance = complexityAdaptiveDistance(image,edgeImg, labels , labelCounts , graphDistances ,colorHists,gradient, numLabels, labelSet1 , labelSet2 , labelIndices)
-highCompLevel = 0.1;
-boundary = 5.6;
+highCompLevel = 0.3;
+boundary = 4;
 
  DL = getLowComplexityDistance(image, labels , graphDistances , colorHists,gradient, labelSet1, labelSet2 , edgeImg , labelIndices);
  DH = getHighComplexityDistance(image,labels , graphDistances , colorHists,gradient, labelSet1, labelSet2 , labelIndices);
  
  rm = 0;
  rn = 0;
- [sx , sy] = size(labels);
- sz = sx*sy;
- 
- if(length(labelSet1) > 6 || length(labelSet2) > 6)
-     asd = 4;
- end
+
  
  for i = labelSet1
-     rm = rm + (double(labelCounts(1,i))) / double(sz);
+     rm = rm + (double(labelCounts(1,i))) / double(numLabels);
      
  end
  
  for j = labelSet2
-     rn = rn + double(labelCounts(1,j)) / double(sz);
+     rn = rn + double(labelCounts(1,j)) / double(numLabels);
  end
  
  Ds = rm + rn;
@@ -36,7 +31,8 @@ boundary = 5.6;
  %p = 1/10;
  
  
- %disp(sprintf("Tm = %d | Tn = %d | p = %0.4f" ,length(labelSet1), length(labelSet2),p));
- distance = p*DL +(1-p)*DH + 4*Ds;
+ disp(sprintf("Tm = %d | Tn = %d | p = %0.4f" ,length(labelSet1), length(labelSet2),p));
+ disp(sprintf("DL = %f | DH = %f | DS = %f | p = %0.4f" ,DL, DH ,Ds ,p));
+ distance = p*DL +(1-p)*DH + 2*Ds;
 end
 
