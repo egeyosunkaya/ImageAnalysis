@@ -32,7 +32,7 @@ testRes = getLabelGraph(labels, numlabels);
 
 
 iterationCount = numlabels - 5;
-resultSet = mergeAll(I,labels,numlabels , iterationCount);
+[resultSet,highScore] = mergeAll(I,labels,numlabels , iterationCount);
 
 reslabels = labels;
 for i = 1:length(resultSet)
