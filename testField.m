@@ -37,10 +37,11 @@ iterationCount = ceil(numlabels - 3 );
 
 
 sorted = sort(scores{1,1},'descend');
+bbs = cell(1,3);
 for k = 1:3
     s = sorted(1,k);
     ind = find(scores{1,1} == s);
-    visualizeSet(I_ORG , labels, scores{1,2}{1,ind});
+    bbs{1,k} = visualizeSet(I_ORG , labels, scores{1,2}{1,ind});
 end
 
 

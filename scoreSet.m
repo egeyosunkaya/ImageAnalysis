@@ -1,6 +1,6 @@
 function score = scoreSet(edgeImg, labels, numlabels,labelSet , labelIndices)
 
-k = 1;
+k = 0.5;
 totalCost = 0;
 lsum = 0;
 

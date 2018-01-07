@@ -138,7 +138,8 @@ scoreCount = 1;
     
 for i = 1:iterationCount
     [sets, lastMerged,~] = mergePixels(I,edgeImg, labels ,numlabels , graphDistances ,colorHists, ohists , sets , labelIndices);
-    score = scoreSet(edgeImg, labels, numlabels,lastMerged , labelIndices);
+    %score = scoreSet(edgeImg, labels, numlabels,lastMerged , labelIndices);
+    score = getSophisticatedEdgeScore(edgeImg, labels, labelIndices, lastMerged);
     fprintf("Score: %f \n" , score);
     if(score > 0)
         scores{1,1}(1,scoreCount) = score;

@@ -1,7 +1,7 @@
 function [outputScore] = getSophisticatedEdgeScore(edgeImg, labels, labelIndices, spSet)
 
 [~,labelCount] = size(spSet);
-
+k = 0.4;
 totalSize = 0;
 edgeCount = 0;
 for i=1:labelCount
@@ -18,6 +18,6 @@ for i=1:labelCount
 end
 
 
-outputScore = edgeCount / totalSize;
+outputScore = edgeCount / ((totalSize).^k);
 end
 
