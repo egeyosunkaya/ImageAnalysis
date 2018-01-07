@@ -8,7 +8,7 @@ for i = labelSet1
     for j = labelSet2
         Dmax = max(Dmax, getColorDistance(image,labels,colorHists,gradient,i,j));
         Dg = min(Dg, graphDistances(i,j));
-        [de, l] = calculateEdgeCost(edgeImg, labels, labelIndices, i,j);
+        [de, l] = calculateGradientEdgeCost(edgeImg, labels, labelIndices, i,j);
         lsum = l + lsum;
         De = De + l * de;
     end
