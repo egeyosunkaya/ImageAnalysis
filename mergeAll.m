@@ -1,4 +1,4 @@
-function [sets , bestObj] = mergeAll(I,labels,numlabels,iterationCount)
+function [sets , scores] = mergeAll(I,labels,numlabels,iterationCount)
 
     graph = getLabelGraph(labels, numlabels+1);
     
@@ -132,16 +132,18 @@ end
 
  edgeImg = edge(rgb2gray(I),'Prewitt');
 %[edgeImg, ~] = imgradient(rgb2gray(I),'prewitt');
-    
-    highScore = -2;
+  
+scores = cell(1,2);
+scoreCount = 1;
     
 for i = 1:iterationCount
     [sets, lastMerged,~] = mergePixels(I,edgeImg, labels ,numlabels , graphDistances ,colorHists, ohists , sets , labelIndices);
     score = scoreSet(edgeImg, labels, numlabels,lastMerged , labelIndices);
     fprintf("Score: %f \n" , score);
-    if(score > highScore)
-        bestObj = lastMerged;
-        highScore = score;
+    if(score > 0)
+        scores{1,1}(1,scoreCount) = score;
+        scores{1,2}{1,scoreCount} = lastMerged;
+        scoreCount = scoreCount + 1;
     end
 end
 

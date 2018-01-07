@@ -1,5 +1,5 @@
  
-NAME = '000012.jpg';
+NAME = '000026.jpg';
 LABEL     = "Labels/label_" + NAME + ".mat";
 LABEL_NUM = "Labels/label_number_" + NAME + ".mat";
 PATH_IMG = "Data/" + NAME;
@@ -31,34 +31,19 @@ testRes = getLabelGraph(labels, numlabels);
 
 
 
-iterationCount = ceil(numlabels - 5 );
-[resultSet,highScore] = mergeAll(I,labels,numlabels , iterationCount);
+iterationCount = ceil(numlabels - 3 );
+[resultSet,scores] = mergeAll(I,labels,numlabels , iterationCount);
 
-reslabels = labels;
-for i = 1:length(resultSet)
-    for j = 2:length(resultSet{1,i})
-        reslabels(reslabels == resultSet{1,i}(1,j)) = resultSet{1,i}(1,1);
-        
-    end
-    
+
+
+sorted = sort(scores{1,1},'descend');
+for k = 1:3
+    s = sorted(1,k);
+    ind = find(scores{1,1} == s);
+    visualizeSet(I_ORG , labels, scores{1,2}{1,ind});
 end
 
-scorelabels = labels;
-for i = 1:length(highScore)
-    for j = 2:length(highScore)
-        scorelabels(scorelabels == highScore(1,j)) = highScore(1,1);
-    end
-end
 
-scorelabels(scorelabels ~= highScore(1,1)) = 0;
-
-
-
-
-%figure;
-%imshowpair(I_ORG, label2rgb(reslabels), 'montage');
-figure;
-imshowpair(I_ORG, label2rgb(scorelabels), 'montage');
 
 
 
