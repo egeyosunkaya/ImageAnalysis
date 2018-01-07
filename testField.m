@@ -1,5 +1,5 @@
  
-NAME = '000026.jpg';
+NAME = '000373.jpg';
 LABEL     = "Labels/label_" + NAME + ".mat";
 LABEL_NUM = "Labels/label_number_" + NAME + ".mat";
 PATH_IMG = "Data/" + NAME;

@@ -21,8 +21,34 @@ for i=1:detectedCount
         rtopY = BoundingData(2 + (4*(b-1)),1);
         rlowX = BoundingData(3 + (4*(b-1)),1);
         rlowY = BoundingData(4 + (4*(b-1)),1);
-        ourBox  = [ topX,   topY,   lowX-topX, lowY-topY  ];
-        realBox = [ rtopX, rtopY, rlowX-rtopX, rlowY-rtopY];
+        width = 0;
+        if lowX > topX
+            width =  lowX-topX;
+        else
+             width =  topX-lowX;
+        end
+        height = 0;
+        if lowY > topY
+            height =  lowY-topY ;
+        else
+             height =  topY-lowY;
+        end
+        
+        realWidth = 0;
+        if rlowX > rtopX
+            realWidth =  rlowX-rtopX;
+        else
+             realWidth =  rtopX-rlowX;
+        end
+        realHeight = 0;
+        if rlowY > rtopY
+            realHeight =   rlowY-rtopY ;
+        else
+             realHeight =  rtopY-rlowY;
+        end
+        
+        ourBox  = [ topX,   topY, width ,height  ];
+        realBox = [ rtopX, rtopY,realWidth ,realHeight];
         overlapRatio = bboxOverlapRatio(ourBox,realBox);
         if overlapRatio > threshold
             correctObjects = correctObjects + 1;
