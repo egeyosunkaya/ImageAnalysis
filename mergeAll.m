@@ -130,8 +130,8 @@ for l = 1:numlabels
     
 end   
 
-    edgeImg = edge(rgb2gray(I),'Prewitt');
-
+ edgeImg = edge(rgb2gray(I),'Prewitt');
+%[edgeImg, ~] = imgradient(rgb2gray(I),'prewitt');
     
     highScore = -2;
     
@@ -141,6 +141,7 @@ for i = 1:iterationCount
     fprintf("Score: %f \n" , score);
     if(score > highScore)
         bestObj = lastMerged;
+        highScore = score;
     end
 end
 
